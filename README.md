@@ -7,11 +7,22 @@ ipdb有一个社区项目 [ngx_http_ipdb_module](https://github.com/vislee/ngx_h
 为了可复现的构建过程，并适配多个nginx版本，遂有了使用Dockerfile来构建的想法。使用方法如下:
 
 ```bash
+# 如有需要, 可先更改 NGINX_VERSION 为想要的版本
+# ubuntu 20.04 所用默认 nginx-full 为 1.18.0
 # 本地构建镜像(编译so)
 docker build -t nginx-ipdb:0.1 .
 
 # 从镜像中拷贝so文件到宿主机的build/目录
 docker-compose up
+```
+
+执行完 `docker-compose up` 目录后, 编译得到的动态链接库即存放在当前目录的`build/`文件夹中。
+
+```
+# tree ./build
+./build
+├── ngx_http_ipdb_module_1.18.0.so
+└── ngx_http_ipdb_module_1.18.0.so.md5
 ```
 
 此外，之所以会调研ipdb是为了简单地保护一下我个人项目的API，让其仅能在城市地区访问。
