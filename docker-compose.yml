@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  nginx:
+    image: 'nginx-ipdb:0.1'
+    volumes:
+      - ./build:/build
